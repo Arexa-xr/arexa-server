@@ -29,8 +29,8 @@ adminSchema.pre("save", async function (next) {
    this.password = await bcrypt.hash(this.password, 10);
 });
 
-adminSchema.methods.isPassworCorrect = async function (password) {
-   return await bcrypt.compare(this.password, password);
+adminSchema.methods.isPasswordCorrect = async function (password) {
+   return await bcrypt.compare(password, this.password);
 };
 
 adminSchema.methods.generateAccessToken = function () {
